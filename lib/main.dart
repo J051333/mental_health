@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:mental_health/breathe.dart';
 import 'package:mental_health/mh_colors.dart';
 
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Think',
       theme: ThemeData(
-        primarySwatch: MHColors.menuButtonColor,
+        primarySwatch: MHColors.appThemeColor,
       ),
       home: const HomePage(title: 'Take care of yourself'),
     );
@@ -39,7 +38,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: MHColors.menuBGColor,
       appBar: AppBar(
         title: Text(widget.title),
       ),
@@ -51,7 +50,10 @@ class _HomePageState extends State<HomePage> {
               Future.microtask(() {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Breathe()),
+                  MaterialPageRoute(
+                    builder: (context) => const Breathe(),
+                    maintainState: false,
+                  ),
                 );
               });
             }),
@@ -94,11 +96,11 @@ class MenuItem extends StatelessWidget {
         onPressed: () => buttonAction(),
       ),
       decoration: BoxDecoration(
-        color: Colors.black45,
-        border: Border.all(
-          color: Colors.black12,
-          width: 2,
-        ),
+        color: MHColors.menuButtonColor,
+        // border: Border.all(
+        //   color: Colors.black12,
+        //   width: 2,
+        // ),
         borderRadius: const BorderRadius.all(Radius.circular(8)),
       ),
     );

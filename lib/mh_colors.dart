@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MHColors {
-  static final menuButtonColor = createMaterialColor(const Color (0xFF822e58));
+  static final appThemeColor = createMaterialColor(const Color (0xFF822e58));
+  static final breatheTextTwo = createMaterialColor(const Color (0xFF261863));
+  static final menuBGColor = createMaterialColor(const Color(0xff32212a));
+  static final menuButtonColor = createMaterialColor(const Color(0xffa54576));
 
   /// https://gist.github.com/filipvk/244be04f1dbdba52788017f008477484
   static MaterialColor createMaterialColor(Color color) {
