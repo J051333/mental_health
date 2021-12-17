@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:mental_health/breathe.dart';
 import 'package:mental_health/mh_colors.dart';
 
+import 'journals.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -58,7 +60,17 @@ class _HomePageState extends State<HomePage> {
               });
             }),
             const SizedBox(height: menuSpacing),
-            MenuItem("Journal", () {}),
+            MenuItem("Journal", () {
+              Future.microtask(() {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const JournalList(),
+                    maintainState: false,
+                  ),
+                );
+              });
+            }),
             const SizedBox(height: menuSpacing),
             MenuItem("Helplines", () {}),
             const SizedBox(height: menuSpacing),
