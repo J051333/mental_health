@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mental_health/breathe.dart';
 import 'package:flutter/services.dart';
-import 'package:mental_health/mh_colors.dart';
 
-import 'journals.dart';
+import 'package:mental_health/helplines.dart';
+import 'package:mental_health/journals.dart';
+import 'package:mental_health/mh_colors.dart';
+import 'package:mental_health/breathe.dart';
 
 void main() {
   runApp(const MyApp());
@@ -73,7 +74,20 @@ class _HomePageState extends State<HomePage> {
               });
             }),
             const SizedBox(height: menuSpacing),
-            MenuItem("Helplines", () {}),
+            MenuItem(
+              "Helplines",
+              () {
+                Future.microtask(() {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HelplineList(),
+                      maintainState: false,
+                    ),
+                  );
+                });
+              },
+            ),
             const SizedBox(height: menuSpacing),
             MenuItem("???", () {}),
           ],

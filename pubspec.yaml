@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   aes_crypt_null_safe: ^2.0.2
   path_provider: ^2.0.8
+  url_launcher: ^6.0.18
+  webview_flutter: ^3.0.0
 
 dev_dependencies:
   flutter_test:

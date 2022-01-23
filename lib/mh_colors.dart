@@ -8,10 +8,15 @@ class MHColors {
   static final menuButtonColor = createMaterialColor(const Color(0xffade0e0));
   static final menuButtonTextColor = createMaterialColor(const Color(0xFF427A87));
 
-  // Menu-option colors
+  // Breathe colors
   static final breatheTextTwo = createMaterialColor(const Color (0xFF261863));
+
+  // Journal Colors
   static final journalsPassFocusColor = createMaterialColor(const Color(0xff23dcaa));
   static final journalCursorColor = createMaterialColor(const Color(0xFF293553));
+
+  // Helpline Colors
+
 
   ///
   /// https://gist.github.com/filipvk/244be04f1dbdba52788017f008477484
