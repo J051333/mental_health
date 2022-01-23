@@ -41,22 +41,23 @@ class _BreatheState extends State<Breathe> with SingleTickerProviderStateMixin {
     _elapsed += 10;
     final Color newColor;
 
-    if (_elapsed == _inDur) {
-      newColor = Colors.deepPurple;
-      _textStr = "Hold it . . .";
-      _prevWait = _inDur;
-      _wait = boxBreathing ? _boxHold : _holdDur;
-    } else if (_elapsed == (boxBreathing ? _boxHold : _holdDur)) {
-      newColor = MHColors.breatheTextTwo;
-      _textStr = "Breathe out . . .";
-      _prevWait = boxBreathing ? _boxHold : _holdDur;
-      _wait = boxBreathing ? _boxOut : _outDur;
-    } else if (_elapsed == (boxBreathing ? _boxOut : _outDur)) {
+    // In reverse order to check in between absolute intervals.
+    if (_elapsed >= (boxBreathing ? _boxOut : _outDur)) {
       newColor = Colors.pink;
       _elapsed = 0;
       _textStr = "Breathe in . . .";
       _prevWait = 0;
       _wait = _inDur;
+    } else if (_elapsed >= (boxBreathing ? _boxHold : _holdDur)) {
+      newColor = MHColors.breatheTextTwo;
+      _textStr = "Breathe out . . .";
+      _prevWait = boxBreathing ? _boxHold : _holdDur;
+      _wait = boxBreathing ? _boxOut : _outDur;
+    } else if (_elapsed >= _inDur) {
+      newColor = Colors.deepPurple;
+      _textStr = "Hold it . . .";
+      _prevWait = _inDur;
+      _wait = boxBreathing ? _boxHold : _holdDur;
     } else {
       newColor = _color;
     }
