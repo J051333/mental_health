@@ -16,9 +16,10 @@ class MHColors {
   static final journalCursorColor = createMaterialColor(const Color(0xFF293553));
 
   // Helpline Colors
+  static final helplineTextColor = createMaterialColor(const Color(0xFF8A76FC));
+  static final helplineLinkColor = createMaterialColor(const Color(0xFF16765E));
 
-
-  ///
+  /// Creates a material color swatch from the [color].
   /// https://gist.github.com/filipvk/244be04f1dbdba52788017f008477484
   static MaterialColor createMaterialColor(Color color) {
     List strengths = <double>[.05];

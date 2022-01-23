@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:aes_crypt_null_safe/aes_crypt_null_safe.dart';
 import 'mh_colors.dart';
 
-final _defaultPassword = "p(7sb*4165749846516agsg^1223#asd";
+const _defaultPassword = "p(7sb*4165749846516agsg^1223#asd";
 late Directory appDataDir;
 
 class NameJournalEntry extends StatefulWidget {
