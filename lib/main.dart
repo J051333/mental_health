@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mental_health/breathe.dart';
+import 'package:flutter/services.dart';
 import 'package:mental_health/mh_colors.dart';
 
 import 'journals.dart';
@@ -99,13 +100,16 @@ class MenuItem extends StatelessWidget {
         child: Center(
           child: Text(
             _buttonText,
-            style: const TextStyle(
-              color: Colors.white,
+            style: TextStyle(
+              color: MHColors.menuButtonTextColor,
               fontSize: 50,
             ),
           ),
         ),
-        onPressed: () => buttonAction(),
+        onPressed: () {
+          HapticFeedback.lightImpact();
+          buttonAction();
+        },
       ),
       decoration: BoxDecoration(
         color: MHColors.menuButtonColor,

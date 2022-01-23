@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 
 class MHColors {
-  static final appThemeColor = createMaterialColor(const Color (0xFF822e58));
-  static final breatheTextTwo = createMaterialColor(const Color (0xFF261863));
-  static final menuBGColor = createMaterialColor(const Color(0xff32212a));
-  static final menuButtonColor = createMaterialColor(const Color(0xffa54576));
 
+  // Main app menu colors
+  static final appThemeColor = createMaterialColor(const Color (0xffaee1e1));
+  static final menuBGColor = createMaterialColor(const Color(0xffcdf3f5));
+  static final menuButtonColor = createMaterialColor(const Color(0xffade0e0));
+  static final menuButtonTextColor = createMaterialColor(const Color(0xFF427A87));
+
+  // Menu-option colors
+  static final breatheTextTwo = createMaterialColor(const Color (0xFF261863));
+  static final journalsPassFocusColor = createMaterialColor(const Color(0xff23dcaa));
+  static final journalCursorColor = createMaterialColor(const Color(0xFF293553));
+
+  ///
   /// https://gist.github.com/filipvk/244be04f1dbdba52788017f008477484
   static MaterialColor createMaterialColor(Color color) {
     List strengths = <double>[.05];
