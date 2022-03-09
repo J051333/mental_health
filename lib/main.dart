@@ -6,6 +6,7 @@ import 'package:mental_health/helplines.dart';
 import 'package:mental_health/journals.dart';
 import 'package:mental_health/mh_colors.dart';
 import 'package:mental_health/breathe.dart';
+import 'package:mental_health/day_tracker/day_tracker_menu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,6 +51,7 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: <Widget>[
+            // Breathe
             MenuItem("Breathe", () {
               Future.microtask(() {
                 Navigator.push(
@@ -62,6 +64,7 @@ class _HomePageState extends State<HomePage> {
               });
             }),
             const SizedBox(height: menuSpacing),
+            // Journals
             MenuItem("Journal", () {
               Future.microtask(() {
                 Navigator.push(
@@ -74,9 +77,23 @@ class _HomePageState extends State<HomePage> {
               });
             }),
             const SizedBox(height: menuSpacing),
+            // Mood Tracker
+            MenuItem("Daily Mood Tracker", () {
+              Future.microtask(() {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const TrackerChart(),
+                    maintainState: false,
+                  ),
+                );
+              });
+            }),
+            const SizedBox(height: menuSpacing),
+            // Helplines
             MenuItem(
               "Helplines",
-              () {
+                  () {
                 Future.microtask(() {
                   Navigator.push(
                     context,
@@ -88,8 +105,6 @@ class _HomePageState extends State<HomePage> {
                 });
               },
             ),
-            const SizedBox(height: menuSpacing),
-            MenuItem("???", () {}),
           ],
         ),
       ),
@@ -118,6 +133,7 @@ class MenuItem extends StatelessWidget {
               color: MHColors.menuButtonTextColor,
               fontSize: 50,
             ),
+            textAlign: TextAlign.center,
           ),
         ),
         onPressed: () {
@@ -131,7 +147,15 @@ class MenuItem extends StatelessWidget {
         //   color: Colors.black12,
         //   width: 2,
         // ),
-        borderRadius: const BorderRadius.all(Radius.circular(8)),
+        borderRadius: const BorderRadius.all(Radius.circular(30)),
+        boxShadow: [
+          BoxShadow(
+            color: MHColors.menuButtonShadowColor,
+            spreadRadius: 3,
+            blurRadius: 10,
+            offset: const Offset(0, 3),
+          ),
+        ],
       ),
     );
   }

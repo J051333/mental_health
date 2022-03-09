@@ -7,6 +7,8 @@ class MHColors {
   static final menuBGColor = createMaterialColor(const Color(0xffcdf3f5));
   static final menuButtonColor = createMaterialColor(const Color(0xffade0e0));
   static final menuButtonTextColor = createMaterialColor(const Color(0xFF427A87));
+  static final menuButtonShadowColor = createMaterialColor(const Color(
+      0xFF427187));
 
   // Breathe colors
   static final breatheTextTwo = createMaterialColor(const Color (0xFF261863));
@@ -18,6 +20,9 @@ class MHColors {
   // Helpline Colors
   static final helplineTextColor = createMaterialColor(const Color(0xFF8A76FC));
   static final helplineLinkColor = createMaterialColor(const Color(0xFF16765E));
+
+  // Mood Tracker Colors
+  static final trackerLineColor = createMaterialColor(const Color(0xFF20C298));
 
   /// Creates a material color swatch from the [color].
   /// https://gist.github.com/filipvk/244be04f1dbdba52788017f008477484
