@@ -6,7 +6,7 @@ import 'package:mental_health/helplines.dart';
 import 'package:mental_health/journals.dart';
 import 'package:mental_health/mh_colors.dart';
 import 'package:mental_health/breathe.dart';
-import 'package:mental_health/day_tracker/day_tracker_menu.dart';
+import 'package:mental_health/day_tracker/day_tracker_chart.dart';
 
 void main() {
   runApp(const MyApp());
