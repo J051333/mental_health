@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,6 +11,7 @@ import 'package:mental_health/breathe.dart';
 import 'package:mental_health/day_tracker/day_tracker_chart.dart';
 import 'package:mental_health/day_tracker/mood_selection.dart';
 import 'package:mental_health/day_tracker/tracker_menu.dart';
+import 'package:path_provider/path_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,6 +37,7 @@ class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
+  static late final Directory appDataDir;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -41,6 +45,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   static const menuSpacing = 10.0;
+
+  @override
+  void initState() {
+    setAppDataDir();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,6 +122,11 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+}
+
+void setAppDataDir() async {
+  HomePage.appDataDir = await getApplicationDocumentsDirectory();
+  print("init");
 }
 
 class MenuItem extends StatelessWidget {

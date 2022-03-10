@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
+import '../main.dart';
 import 'mood.dart';
 import 'package:mental_health/mh_colors.dart';
 
@@ -15,12 +16,10 @@ class MoodSelector extends StatefulWidget {
 
 class _MoodSelectorState extends State<MoodSelector> {
   int value = 5;
-  late Directory appDataDir;
   static const int faceWidthFactor = 7;
 
   @override
   void initState() {
-    _setAppDataDir();
     super.initState();
   }
 
@@ -96,7 +95,9 @@ class _MoodSelectorState extends State<MoodSelector> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {_writeMood(value);},
+        onPressed: () {
+          _writeMood(value);
+        },
         child: Icon(
           Icons.check_rounded,
           color: MHColors.menuButtonTextColor,
@@ -106,9 +107,10 @@ class _MoodSelectorState extends State<MoodSelector> {
   }
 
   void _writeMood(int mood) {
-    Directory moodDir = Directory('${appDataDir.path}/data/moods');
+    Directory moodDir = Directory('${HomePage.appDataDir.path}/data/moods');
     if (moodDir.existsSync()) {
-      String moodFileName = "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}.moodent";
+      String moodFileName =
+          "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}.moodent";
       File newMoodEntry = File("$moodDir/$moodFileName");
       newMoodEntry.writeAsString("$mood");
       Navigator.pop(context);
@@ -117,9 +119,5 @@ class _MoodSelectorState extends State<MoodSelector> {
       moodDir.createSync(recursive: true);
       _writeMood(mood);
     }
-  }
-
-  void _setAppDataDir() async {
-    appDataDir = await getApplicationDocumentsDirectory();
   }
 }

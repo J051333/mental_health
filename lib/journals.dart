@@ -5,10 +5,10 @@ import "package:path_provider/path_provider.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:aes_crypt_null_safe/aes_crypt_null_safe.dart';
+import 'main.dart';
 import 'mh_colors.dart';
 
 const _defaultPassword = "p(7sb*4165749846516agsg^1223#asd";
-late Directory appDataDir;
 
 class NameJournalEntry extends StatefulWidget {
   final Function getJournals;
@@ -249,8 +249,8 @@ class _WriteJournalState extends State<WriteJournal> {
           floatingActionButton: FloatingActionButton(
             onPressed: () {
               if (tec.text.isNotEmpty) {
-                crypt.encryptTextToFileSync(
-                    tec.text, "${appDataDir.path}/data/journals/$name.jour");
+                crypt.encryptTextToFileSync(tec.text,
+                    "${HomePage.appDataDir.path}/data/journals/$name.jour");
                 widget.getJournals();
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                   content: Text(
@@ -312,7 +312,7 @@ class _JournalPassDecodeState extends State<JournalPassDecode> {
       }
 
       String decText = crypt.decryptTextFromFileSync(
-          "${appDataDir.path}/data/journals/${widget.journalName}.jour");
+          "${HomePage.appDataDir.path}/data/journals/${widget.journalName}.jour");
 
       print(decText);
 
@@ -461,8 +461,8 @@ class _JournalListState extends State<JournalList> {
     journals.clear();
     names.clear();
     // Get the directory that the journals are stored in
-    appDataDir = await getApplicationDocumentsDirectory();
-    final dir = Directory("${appDataDir.path}/data/journals");
+    // appDataDir = await getApplicationDocumentsDirectory();
+    final dir = Directory("${HomePage.appDataDir.path}/data/journals");
 
     if (await dir.exists()) {
       // If dir exists, we add all journals to the list
@@ -499,7 +499,8 @@ class _JournalListState extends State<JournalList> {
                           (context) => {Navigator.of(context).pop(false)},
                         ));
                 if (deleteAll) {
-                  final delDir = Directory("${appDataDir.path}/data/journals");
+                  final delDir =
+                      Directory("${HomePage.appDataDir.path}/data/journals");
                   if (await delDir.exists()) {
                     setState(() {
                       delDir.delete(recursive: true);

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:mental_health/day_tracker/day_tracker_chart.dart';
 import 'package:mental_health/day_tracker/mood_selection.dart';
 import 'package:mental_health/journals.dart';
+import 'package:mental_health/main.dart';
 import 'package:mental_health/mh_colors.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -16,11 +17,9 @@ class TrackerMenu extends StatefulWidget {
 }
 
 class _TrackerMenuState extends State<TrackerMenu> {
-  late Directory appDataDir;
 
   @override
   void initState() {
-    _setAppDataDir();
     super.initState();
   }
 
@@ -99,7 +98,7 @@ class _TrackerMenuState extends State<TrackerMenu> {
         child: const Icon(Icons.gavel_rounded),
         onPressed: () {
           setState(() {
-            File("${appDataDir.path}/data/moods/${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}.moodent")
+            File("${HomePage.appDataDir.path}/data/moods/${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}.moodent")
                 .delete();
           });
         },
@@ -110,17 +109,11 @@ class _TrackerMenuState extends State<TrackerMenu> {
   bool _isTodayRated() {
     try {
       return File(
-              "${appDataDir.path}/data/moods/${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}.moodent")
+              "${HomePage.appDataDir.path}/data/moods/${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}.moodent")
           .existsSync();
     } catch (e) {
-      _setAppDataDir();
-      print(e.toString());
+      print("ERROR: appDataDirectory not defined");
       return true;
     }
-  }
-
-  void _setAppDataDir() async {
-    appDataDir = await getApplicationDocumentsDirectory();
-    print("init");
   }
 }
