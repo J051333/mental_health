@@ -7,6 +7,8 @@ import 'package:mental_health/journals.dart';
 import 'package:mental_health/mh_colors.dart';
 import 'package:mental_health/breathe.dart';
 import 'package:mental_health/day_tracker/day_tracker_chart.dart';
+import 'package:mental_health/day_tracker/mood_selection.dart';
+import 'package:mental_health/day_tracker/tracker_menu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -83,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const TrackerChart(),
+                    builder: (context) => const TrackerMenu(),
                     maintainState: false,
                   ),
                 );

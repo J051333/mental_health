@@ -23,6 +23,14 @@ class MHColors {
 
   // Mood Tracker Colors
   static final trackerLineColor = createMaterialColor(const Color(0xFF20C298));
+  static final selectorActiveColor = createMaterialColor(const Color(0xFF7856C7));
+  static final selectorInactiveColor = createMaterialColor(const Color(0xFFAFA4DE));
+  static final trackerMenuTextDisabled = createMaterialColor(const Color(
+      0xFF686868));
+  static final trackerMenuButtonDisabled = createMaterialColor(const Color(
+      0xFFE0E0E0));
+  static final trackerMenuShadowDisabled = createMaterialColor(const Color(
+      0xFF767676));
 
   /// Creates a material color swatch from the [color].
   /// https://gist.github.com/filipvk/244be04f1dbdba52788017f008477484
