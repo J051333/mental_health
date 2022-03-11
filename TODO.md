@@ -6,6 +6,7 @@
     - Fix Scroll Jitter
        - Seems to be caused by zoom with 2 fingers and slowness
        - CHANGE IT TO BAR GRAPHS WITH THE DATES AS STRINGS AND LABELS NOT DATETIMES
+          - MAKE SURE TO KEEP A BACKUP
     - Fix Placing and Spacing
  - Implement Mood Storage
     
