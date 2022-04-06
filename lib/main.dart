@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -126,7 +127,9 @@ class _HomePageState extends State<HomePage> {
 
 void setAppDataDir() async {
   HomePage.appDataDir = await getApplicationDocumentsDirectory();
-  print("init");
+  if (kDebugMode) {
+    print("init");
+  }
 }
 
 class MenuItem extends StatelessWidget {
